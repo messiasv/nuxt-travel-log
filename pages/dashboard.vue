@@ -26,7 +26,7 @@ function toggleSidebar() {
       </div>
     </div>
     <div class="flex-1">
-      <h1>Dashboard</h1>
+      <NuxtPage />
     </div>
   </div>
 </template>
