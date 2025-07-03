@@ -36,12 +36,12 @@ const onSubmit = handleSubmit((values) => {
         type="textarea"
         :error="errors.description"
       />
-      <AppFormField
+      <AppFormFieldNumber
         name="lat"
         label="Latitude"
         :error="errors.lat"
       />
-      <AppFormField
+      <AppFormFieldNumber
         name="long"
         label="Longitude"
         :error="errors.long"
