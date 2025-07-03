@@ -41,13 +41,13 @@ export default defineEventHandler(async (event) => {
     }));
   }
 
-  const existingLocation = !!(await db.query.location.findFirst({
+  const existingLocation = await db.query.location.findFirst({
     where:
       and(
         eq(location.name, result.data.name),
         eq(location.userId, event.context.user.id),
       ),
-  }));
+  });
 
   if (existingLocation) {
     return sendError(event, createError({
