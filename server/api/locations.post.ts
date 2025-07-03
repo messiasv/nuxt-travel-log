@@ -1,5 +1,7 @@
 import type { DrizzleError } from "drizzle-orm";
 
+import slug from "slug";
+
 import db from "~/lib/db";
 import { InsertLocation, location } from "~/lib/db/schema";
 
@@ -38,7 +40,7 @@ export default defineEventHandler(async (event) => {
   try {
     const [created] = await db.insert(location).values({
       ...result.data,
-      slug: result.data.name.replaceAll(" ", "-").toLowerCase(),
+      slug: slug(result.data.name),
       userId: event.context.user.id,
     }).returning();
 
