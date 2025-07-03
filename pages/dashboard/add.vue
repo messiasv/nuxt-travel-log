@@ -3,12 +3,23 @@ import { toTypedSchema } from "@vee-validate/zod";
 
 import { InsertLocation } from "~/lib/db/schema";
 
-const { handleSubmit, errors } = useForm({
+const { handleSubmit, errors, meta } = useForm({
   validationSchema: toTypedSchema(InsertLocation),
 });
 
 const onSubmit = handleSubmit((values) => {
   console.log(values);
+});
+
+onBeforeRouteLeave(() => {
+  if (meta.value.dirty) {
+    // eslint-disable-next-line no-alert
+    const confirm = window.confirm("Are you sure you want to leave? All unsaved changes will be lost.");
+    if (!confirm) {
+      return false;
+    }
+  }
+  return true;
 });
 </script>
 
