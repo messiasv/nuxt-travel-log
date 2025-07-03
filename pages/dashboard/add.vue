@@ -3,6 +3,7 @@ import { toTypedSchema } from "@vee-validate/zod";
 
 import { InsertLocation } from "~/lib/db/schema";
 
+const router = useRouter();
 const { handleSubmit, errors, meta } = useForm({
   validationSchema: toTypedSchema(InsertLocation),
 });
@@ -59,7 +60,7 @@ onBeforeRouteLeave(() => {
       />
 
       <div class="flex justify-end gap-2">
-        <button type="button" class="btn btn-outline">
+        <button type="button" class="btn btn-outline" @click="router.back()">
           <Icon name="tabler:arrow-left" size="24" />
           Cancel
         </button>
