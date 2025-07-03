@@ -3,6 +3,7 @@ const props = defineProps<{
   label: string;
   name: string;
   error?: string;
+  disabled?: boolean;
 }>();
 </script>
 
@@ -14,6 +15,7 @@ const props = defineProps<{
     <Field
       :name="props.name"
       type="number"
+      :disabled="disabled"
       class="input w-full"
       :class="{
         'input-error': props.error,

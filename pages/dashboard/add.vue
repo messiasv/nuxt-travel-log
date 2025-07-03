@@ -6,6 +6,7 @@ import { toTypedSchema } from "@vee-validate/zod";
 import { InsertLocation } from "~/lib/db/schema";
 
 const router = useRouter();
+const loading = ref(false);
 const submitError = ref("");
 
 const { handleSubmit, errors, meta, setErrors } = useForm({
@@ -14,6 +15,8 @@ const { handleSubmit, errors, meta, setErrors } = useForm({
 
 const onSubmit = handleSubmit(async (values) => {
   try {
+    submitError.value = "";
+    loading.value = true;
     const inserted = await $fetch("/api/locations", {
       method: "post",
       body: values,
@@ -27,6 +30,7 @@ const onSubmit = handleSubmit(async (values) => {
     }
     submitError.value = error.statusMessage || "An unknown error occurred.";
   }
+  loading.value = false;
 });
 
 onBeforeRouteLeave(() => {
@@ -63,32 +67,42 @@ onBeforeRouteLeave(() => {
         name="name"
         label="Name"
         :error="errors.name"
+        :disabled="loading"
       />
       <AppFormField
         name="description"
         label="Description"
         type="textarea"
         :error="errors.description"
+        :disabled="loading"
       />
       <AppFormFieldNumber
         name="lat"
         label="Latitude"
         :error="errors.lat"
+        :disabled="loading"
       />
       <AppFormFieldNumber
         name="long"
         label="Longitude"
         :error="errors.long"
+        :disabled="loading"
       />
 
       <div class="flex justify-end gap-2">
-        <button type="button" class="btn btn-outline" @click="router.back()">
+        <button
+          :disabled="loading"
+          type="button"
+          class="btn btn-outline"
+          @click="router.back()"
+        >
           <Icon name="tabler:arrow-left" size="24" />
           Cancel
         </button>
-        <button type="submit" class="btn btn-primary">
+        <button :disabled="loading" type="submit" class="btn btn-primary">
           Add
-          <Icon name="tabler:circle-plus-filled" size="24" />
+          <span v-if="loading" class="loading loading-spinner loading-sm" />
+          <Icon v-else name="tabler:circle-plus-filled" size="24" />
         </button>
       </div>
     </form>
