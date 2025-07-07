@@ -60,12 +60,20 @@ onBeforeRouteLeave(() => {
       </p>
     </div>
 
-    <div v-if="submitError" role="alert" class="alert alert-error">
+    <div
+      v-if="submitError"
+      role="alert"
+      class="alert alert-error"
+    >
       <Icon name="tabler:circle-letter-x" size="24" />
       <span>{{ submitError }}</span>
     </div>
 
-    <form action="" class="flex flex-col gap-2" @submit.prevent="onSubmit">
+    <form
+      action=""
+      class="flex flex-col gap-2"
+      @submit.prevent="onSubmit"
+    >
       <AppFormField
         name="name"
         label="Name"
@@ -102,10 +110,18 @@ onBeforeRouteLeave(() => {
           <Icon name="tabler:arrow-left" size="24" />
           Cancel
         </button>
-        <button :disabled="loading" type="submit" class="btn btn-primary">
+        <button
+          :disabled="loading"
+          type="submit"
+          class="btn btn-primary"
+        >
           Add
           <span v-if="loading" class="loading loading-spinner loading-sm" />
-          <Icon v-else name="tabler:circle-plus-filled" size="24" />
+          <Icon
+            v-else
+            name="tabler:circle-plus-filled"
+            size="24"
+          />
         </button>
       </div>
     </form>

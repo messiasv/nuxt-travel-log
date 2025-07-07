@@ -17,6 +17,10 @@ const zoom = 6;
     :zoom="zoom"
   >
     <MglNavigationControl />
-    <MglMarker v-for="point in mapStore.mapPoints" :key="point.id" :coordinates="[point.long, point.lat]" />
+    <MglMarker
+      v-for="point in mapStore.mapPoints"
+      :key="point.id"
+      :coordinates="[point.long, point.lat]"
+    />
   </MglMap>
 </template>
