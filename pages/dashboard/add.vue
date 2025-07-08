@@ -1,34 +1,17 @@
 <script lang="ts" setup>
-import type { FetchError } from "ofetch";
-
 import type { InsertLocation } from "~/lib/db/schema";
 
 const { $csrfFetch } = useNuxtApp();
-const loading = ref(false);
-const submitted = ref(false);
-const submitError = ref("");
-const submitErrors = ref<Record<string, string>>({});
 
 async function onSubmit(values: InsertLocation) {
-  try {
-    submitError.value = "";
-    submitErrors.value = {};
-    loading.value = true;
-    await $csrfFetch("/api/locations", {
-      method: "post",
-      body: values,
-    });
-    submitted.value = true;
-    navigateTo("/dashboard");
-  }
-  catch (e) {
-    const error = e as FetchError;
-    if (error.data?.data) {
-      submitErrors.value = error.data?.data;
-    }
-    submitError.value = getFetchErrorMessage(error);
-  }
-  loading.value = false;
+  await $csrfFetch("/api/locations", {
+    method: "post",
+    body: values,
+  });
+}
+
+function onSubmitComplete() {
+  navigateTo("/dashboard");
 }
 </script>
 
@@ -44,19 +27,11 @@ async function onSubmit(values: InsertLocation) {
       </p>
     </div>
 
-    <div
-      v-if="submitError"
-      role="alert"
-      class="alert alert-error"
-    >
-      <Icon name="tabler:circle-letter-x" size="24" />
-      <span>{{ submitError }}</span>
-    </div>
     <LocationForm
       :on-submit
-      :loading
-      :submitted
-      :submit-errors
+      :on-submit-complete
+      submit-label="Add"
+      submit-icon="tabler:circle-plus-filled"
     />
   </div>
 </template>
