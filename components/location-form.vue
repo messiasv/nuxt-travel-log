@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import type { FetchError } from "ofetch";
 
 import { toTypedSchema } from "@vee-validate/zod";
