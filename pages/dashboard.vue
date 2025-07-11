@@ -44,7 +44,7 @@ effect(() => {
     }];
 
     if (currentLocation.value && currentLocationStatus.value !== "pending") {
-      sidebarStore.sidebarItems.push({
+      sidebarStore.sidebarTopItems.push({
         id: "link-location",
         label: currentLocation.value.name,
         to: {
