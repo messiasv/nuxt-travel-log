@@ -30,8 +30,8 @@ export default defineAuthenticatedEventHandler(async (event) => {
   }
   catch (e) {
     const error = e as DrizzleError;
-    // TODO: 👇 research a better error handling
-    if (error.cause.message === "SQLITE_CONSTRAINT: SQLite error: UNIQUE constraint failed: location.slug") {
+    // TODO: 👇 check & research a better error handling
+    if (error.message === "SQLITE_CONSTRAINT: SQLite error: UNIQUE constraint failed: location.slug") {
       return sendError(event, createError({
         statusCode: 409,
         statusMessage: "Slug must be unique (the location name is used to generate the slug).",
