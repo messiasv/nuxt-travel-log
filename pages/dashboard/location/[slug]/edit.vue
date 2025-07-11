@@ -24,11 +24,12 @@ function onSubmitComplete() {
 
 <template>
   <LocationForm
-    v-if="locationStore.currentLocationStatus !== 'pending'"
+    v-if="locationStore.currentLocationStatus !== 'pending' && locationStore.currentLocation"
     :on-submit
     :initial-values="locationStore.currentLocation"
     submit-label="Update"
     submit-icon="tabler:map-pin-up"
     :on-submit-complete
+    :zoom="11"
   />
 </template>

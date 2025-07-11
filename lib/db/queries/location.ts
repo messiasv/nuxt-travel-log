@@ -1,10 +1,10 @@
 import { and, eq } from "drizzle-orm";
 import { customAlphabet } from "nanoid";
 
-import type { InsertLocation } from "../schema";
+import type { InsertLocation, InsertLocationLog } from "../schema";
 
 import db from "..";
-import { location } from "../schema";
+import { location, locationLog } from "../schema";
 
 const nanoid = customAlphabet("1234567890abcdefghijklmnopqrstuvwxyz", 5);
 
@@ -89,4 +89,17 @@ export async function removeLocationBySlug(
     eq(location.userId, userId),
   )).returning();
   return removed;
+}
+
+export async function insertLocationLog(
+  locationId: number,
+  insertable: InsertLocationLog,
+  userId: number,
+) {
+  const [inserted] = await db.insert(locationLog).values({
+    ...insertable,
+    locationId,
+    userId,
+  }).returning();
+  return inserted;
 }
