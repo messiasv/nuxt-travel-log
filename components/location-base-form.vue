@@ -119,7 +119,7 @@ onBeforeRouteLeave(() => {
     <p>To set the coordinates:</p>
     <ul class="list-disc ml-4 text-sm">
       <li>
-        Drag the <Icon name="tabler:map-pin-filled" class="text-warning" /> marker on the map.
+        Drag the <Icon name="tabler:map-pin-filled" class="text-primary dark:text-warning" /> marker on the map.
       </li>
       <li>
         Double click the map.
