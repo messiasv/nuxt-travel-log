@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-import { deleteLocationLog, findLocation } from "~/lib/db/queries/location";
+import { findLocation } from "~/lib/db/queries/location";
+import { deleteLocationLog } from "~/lib/db/queries/location-log";
 import defineAuthenticatedEventHandler from "~/utils/define-authenticated-event-handler";
 
 export default defineAuthenticatedEventHandler(async (event) => {
