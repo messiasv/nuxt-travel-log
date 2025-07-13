@@ -1,4 +1,5 @@
-import { findLocation, insertLocationLog } from "~/lib/db/queries/location";
+import { findLocation } from "~/lib/db/queries/location";
+import { insertLocationLog } from "~/lib/db/queries/location-log";
 import { InsertLocationLog } from "~/lib/db/schema";
 import defineAuthenticatedEventHandler from "~/utils/define-authenticated-event-handler";
 import sendZodError from "~/utils/send-zod-error";
