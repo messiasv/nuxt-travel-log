@@ -5,22 +5,8 @@
     {
       "idx": 0,
       "version": "6",
-      "when": 1751380843475,
-      "tag": "0000_busy_banshee",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "6",
-      "when": 1751385428738,
-      "tag": "0001_oval_power_pack",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "6",
-      "when": 1751562899320,
-      "tag": "0002_ordinary_ulik",
+      "when": 1752427736099,
+      "tag": "0000_groovy_sebastian_shaw",
       "breakpoints": true
     }
   ]
