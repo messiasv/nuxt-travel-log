@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "nuxt-csurf",
     "nuxt-maplibre",
     "@sentry/nuxt/module",
+    "nuxt-easy-lightbox",
   ],
 
   css: ["~/assets/css/main.css"],
