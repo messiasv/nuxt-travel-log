@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     "@vee-validate/nuxt",
     "nuxt-csurf",
     "nuxt-maplibre",
-    "@sentry/nuxt/module",
     "nuxt-easy-lightbox",
   ],
 
@@ -51,18 +50,5 @@ export default defineNuxtConfig({
 
   colorMode: {
     dataValue: "theme",
-  },
-
-  sentry: {
-    sourceMapsUploadOptions: {
-      org: import.meta.env.SENTRY_ORG,
-      project: import.meta.env.SENTRY_PROJECT,
-    },
-
-    autoInjectServerSentry: "top-level-import",
-  },
-
-  sourcemap: {
-    client: "hidden",
   },
 });
